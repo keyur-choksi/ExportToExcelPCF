@@ -110,9 +110,6 @@ Use a static JSON string to represent your orders, including various data types 
 ]
 ```
 
-<property name="DataToExport" of-type="SingleLine.Text" default-value='[{"OrderID":"1001","OrderDate":"2025-05-01","CustomerName":"Acme Corp","OrderTotal":1500.00,"IsPaid":true},{"OrderID":"1002","OrderDate":"2025-05-03","CustomerName":"Beta LLC","OrderTotal":875.50,"IsPaid":false}]' />
-```
-
 ### Exporting a Gallery's Data with Custom Controls
 
 When your gallery contains nested controls, build the JSON manually. We use:
