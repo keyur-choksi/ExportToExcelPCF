@@ -110,6 +110,23 @@ Use a static JSON string to represent your orders, including various data types 
 ]
 ```
 
+### Exporting a Collection
+
+Populate a collection with heterogeneous data types, then simply call `JSON`:
+
+```powerapps
+ClearCollect(
+  colOrderData,
+  { OrderID: "1001", OrderDate: Today() - 25, CustomerName: "Acme Corp", OrderTotal: 1500, IsPaid: true },
+  { OrderID: "1002", OrderDate: Today() - 23, CustomerName: "Beta LLC", OrderTotal: 875.5, IsPaid: false }
+);
+
+// Bind DataToExport to:
+JSON(colOrderData)
+```
+
+`JSON(colOrderData)` outputs exactly the same structured array, using property names as headers and properly formatting each value type.
+
 ### Exporting a Gallery's Data with Custom Controls
 
 When your gallery contains nested controls, build the JSON manually. We use:
@@ -155,23 +172,6 @@ This results in the same JSON array as above:
   { "OrderID": "1002", "OrderDate": "2025-05-03", "CustomerName": "Beta LLC", "OrderTotal": 875.50, "IsPaid": false }
 ]
 ```
-
-### Exporting a Collection
-
-Populate a collection with heterogeneous data types, then simply call `JSON`:
-
-```powerapps
-ClearCollect(
-  colOrderData,
-  { OrderID: "1001", OrderDate: Today() - 25, CustomerName: "Acme Corp", OrderTotal: 1500, IsPaid: true },
-  { OrderID: "1002", OrderDate: Today() - 23, CustomerName: "Beta LLC", OrderTotal: 875.5, IsPaid: false }
-);
-
-// Bind DataToExport to:
-JSON(colOrderData)
-```
-
-`JSON(colOrderData)` outputs exactly the same structured array, using property names as headers and properly formatting each value type.
 
 ## Contributing
 
