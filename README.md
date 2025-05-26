@@ -37,15 +37,27 @@ A fully configurable Power Apps Component Framework (PCF) control for exporting 
 
 ## Installation
 
-1. Clone or download this repository.
-2. In your PCF project, place `ControlManifest.input.xml` and `index.ts` in the `src` folder.
-3. Run the standard PCF build commands:
+You can get started in two ways:
+
+1. **Import Solutions**: In this repository's `/solutions` folder, you'll find both managed and unmanaged solutions:
+
+   * `ExportToExcelPCF_managed.zip`
+   * `ExportToExcelPCF_unmanaged.zip`
+
+   Simply import the desired solution into your Dataverse environment. The PCF control will then be available to add directly into your Canvas app without further build steps.
+
+2. **Clone & Build (for Code Contributions)**:
+
+   If you wish to modify or extend the control's source code:
 
    ```bash
+   git clone https://github.com/your-org/ExportToExcelPCF.git
+   cd ExportToExcelPCF
    npm install
    npm run build
    ```
-4. Import the control into your Canvas app via the Power Apps component library.
+
+   Update the `ControlManifest.input.xml` or `index.ts` as needed, then re-package and import your custom unmanaged solution.
 
 ## Properties Reference
 
@@ -89,13 +101,16 @@ A fully configurable Power Apps Component Framework (PCF) control for exporting 
 
 ### Passing Static JSON Data
 
-Use a static JSON string to represent your orders, including various data types and bind DataToExport to:
+Use a static JSON string to represent your orders, including various data types and bind `DataToExport` to:
 
 ```json
 [
   { "OrderID": "1001", "OrderDate": "2025-05-01", "CustomerName": "Acme Corp", "OrderTotal": 1500.00, "IsPaid": true },
   { "OrderID": "1002", "OrderDate": "2025-05-03", "CustomerName": "Beta LLC", "OrderTotal": 875.50, "IsPaid": false }
 ]
+```
+
+<property name="DataToExport" of-type="SingleLine.Text" default-value='[{"OrderID":"1001","OrderDate":"2025-05-01","CustomerName":"Acme Corp","OrderTotal":1500.00,"IsPaid":true},{"OrderID":"1002","OrderDate":"2025-05-03","CustomerName":"Beta LLC","OrderTotal":875.50,"IsPaid":false}]' />
 ```
 
 ### Exporting a Gallery's Data with Custom Controls
