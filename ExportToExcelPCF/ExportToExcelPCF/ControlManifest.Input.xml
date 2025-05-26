@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="PCF" constructor="ExportToExcelPCF" version="1.0.0" display-name-key="Export To Excel PCF" description-key="Export To Excel PCF" control-type="standard">
+
+    <!-- Data and File Settings -->
+    <property name="DataToExport" display-name-key="Data To Export" description-key="Data To Export" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="ExportFileName" display-name-key="Export File Name" description-key="Export File Name" of-type="SingleLine.Text" usage="bound" required="true" default-value="Exported_Excel_File" />
+    <property name="ExportSheetName" display-name-key="Export Sheet Name" description-key="Export Sheet Name" of-type="SingleLine.Text" usage="bound" required="true" default-value="Exported_Data" />
+
+    <!-- Button Text & Icon Settings -->
+    <property name="ButtonText" display-name-key="Button Text" description-key="Button Text" of-type="SingleLine.Text" usage="bound" required="true" default-value="Export to Excel" />
+    <property name="ShowIcon" display-name-key="Show Icon" description-key="Toggle icon visibility on button" of-type="TwoOptions" usage="bound" required="false" default-value="false" />
+    <property name="IconName" display-name-key="Icon Name" description-key="Name of the icon" of-type="Enum" usage="input" required="false" default-value="Download">
+      <value name="Download" display-name-key="Download Icon">0</value>
+      <value name="ExcelDocument" display-name-key="Excel Document Icon">1</value>
+    </property>
+    <property name="IconColor" display-name-key="Icon Color" description-key="Color of the icon" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(0, 120, 212, 1)" />
+    <property name="IconSize" display-name-key="Icon Size" description-key="Size of the icon (e.g., 16px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="14px" />
+    <property name="AutoWidthColumns" display-name-key="Auto-Width Columns" description-key="Automatically size columns to fit content" of-type="TwoOptions" usage="bound" required="false" default-value="false" />
+
+    <!-- Typography -->
+    <property name="ButtonFont" display-name-key="Button Font" description-key="Font family for button text" of-type="SingleLine.Text" usage="bound" required="true" default-value="Segoe UI" />
+    <property name="ButtonTextSize" display-name-key="Button Font Size" description-key="Font size for button text (e.g., 14px)" of-type="SingleLine.Text" usage="bound" required="true" default-value="14px" />
+
+    <!-- Font weight as enum -->
+    <property name="FontWeight" display-name-key="Font Weight" description-key="Font weight" of-type="Enum" usage="bound" required="false" default-value="SemiBold">
+      <value name="Thin"        display-name-key="100">0</value>
+      <value name="ExtraLight"  display-name-key="200">1</value>
+      <value name="Light"       display-name-key="300">2</value>
+      <value name="Normal"      display-name-key="400">3</value>
+      <value name="Medium"      display-name-key="500">4</value>
+      <value name="SemiBold"    display-name-key="600">5</value>
+      <value name="Bold"        display-name-key="700">6</value>
+      <value name="ExtraBold"   display-name-key="800">7</value>
+      <value name="Black"       display-name-key="900">8</value>
+    </property>
+
+    <!-- Font style as enum -->
+    <property name="FontStyle" display-name-key="Font Style" description-key="Font style" of-type="Enum" usage="bound" required="false" default-value="Normal">
+      <value name="Normal"   display-name-key="Normal">0</value>
+      <value name="Italic"   display-name-key="Italic">1</value>
+      <value name="Oblique"  display-name-key="Oblique">2</value>
+    </property>
+
+    <!-- Text decoration as enum -->
+    <property name="TextDecoration" display-name-key="Text Decoration" description-key="Text decoration" of-type="Enum" usage="bound" required="false" default-value="None">
+      <value name="None"         display-name-key="None">0</value>
+      <value name="Underline"    display-name-key="Underline">1</value>
+      <value name="Overline"     display-name-key="Overline">2</value>
+      <value name="LineThrough"  display-name-key="Line-through">3</value>
+    </property>
+
+    <!-- Button Dimensions & Spacing -->
+    <property name="ButtonWidth" display-name-key="Button Width" description-key="Width of the button (e.g., auto, 150px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="auto" />
+    <property name="ButtonHeight" display-name-key="Button Height" description-key="Height of the button (e.g., auto, 40px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="auto" />
+    <property name="Padding" display-name-key="Padding" description-key="Inner spacing (e.g., 8px 16px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="8px 16px" />
+    <property name="Margin" display-name-key="Margin" description-key="Outer spacing (e.g., 4px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="0px" />
+
+    <!-- Border & Radius -->
+    <property name="BorderColor" display-name-key="Border Color" description-key="Button border color" of-type="SingleLine.Text" usage="bound" required="false" default-value="transparent" />
+    <property name="BorderWidth" display-name-key="Border Width" description-key="Width of the border (e.g., 1px)" of-type="SingleLine.Text" usage="bound" required="false" default-value="1px" />
+
+    <!-- Border style as enum -->
+    <property name="BorderStyle" display-name-key="Border Style" description-key="Border style" of-type="Enum" usage="bound" required="false" default-value="Solid">    
+      <value name="None"    display-name-key="None">0</value>
+      <value name="Hidden"  display-name-key="Hidden">1</value>
+      <value name="Dotted"  display-name-key="Dotted">2</value>
+      <value name="Dashed"  display-name-key="Dashed">3</value>
+      <value name="Solid"   display-name-key="Solid">4</value>
+      <value name="Double"  display-name-key="Double">5</value>
+      <value name="Groove"  display-name-key="Groove">6</value>
+      <value name="Ridge"   display-name-key="Ridge">7</value>
+      <value name="Inset"   display-name-key="Inset">8</value>
+      <value name="Outset"  display-name-key="Outset">9</value>
+    </property>
+
+    <property name="ButtonRadius" display-name-key="Button Radius" description-key="Border radius for rounded corners" of-type="SingleLine.Text" usage="bound" required="true" default-value="4px" />
+
+    <!-- Colors: Normal State -->
+    <property name="ButtonBackgroundColor" display-name-key="Button Background Color" description-key="Background color of button" of-type="SingleLine.Text" usage="bound" required="true" default-value="RGBA(0, 120, 212, 1)" />
+    <property name="ButtonTextColor" display-name-key="Button Text Color" description-key="Text color of button" of-type="SingleLine.Text" usage="bound" required="true" default-value="RGBA(255, 255, 255, 1)" />
+
+    <!-- Colors: Hover State -->
+    <property name="HoverBackgroundColor" display-name-key="Hover Background Color" description-key="Background color when hovered" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(16, 110, 190, 1)" />
+    <property name="HoverTextColor" display-name-key="Hover Text Color" description-key="Text color when hovered" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(255, 255, 255, 1)" />
+    <property name="HoverBorderColor" display-name-key="Hover Border Color" description-key="Border color when hovered" of-type="SingleLine.Text" usage="bound" required="false" default-value="transparent" />
+
+    <!-- Colors: Active/Focus/Disabled States -->
+    <property name="ActiveBackgroundColor" display-name-key="Active Background Color" description-key="Background when active/clicked" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(0, 90, 160, 1)" />
+    <property name="ActiveTextColor" display-name-key="Active Text Color" description-key="Text when active/clicked" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(255, 255, 255, 1)" />
+    <property name="FocusBorderColor" display-name-key="Focus Border Color" description-key="Border color on focus" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(0, 84, 153, 1)" />
+    <property name="DisabledBackgroundColor" display-name-key="Disabled Background Color" description-key="Background color when disabled" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(243, 242, 241, 1)" />
+    <property name="DisabledTextColor" display-name-key="Disabled Text Color" description-key="Text color when disabled" of-type="SingleLine.Text" usage="bound" required="false" default-value="RGBA(161, 159, 157, 1)" />
+
+    <!-- Tooltip -->
+    <property name="ToolTip" display-name-key="Tool Tip" description-key="Tooltip text for button" of-type="SingleLine.Text" usage="bound" required="true" default-value="Click to export data to Excel" />
+
+    <resources>
+      <code path="index.ts" order="1" />
+    </resources>
+  </control>
+</manifest>
