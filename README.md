@@ -51,7 +51,7 @@ You can get started in two ways:
    If you wish to modify or extend the control's source code:
 
    ```bash
-   git clone https://github.com/your-org/ExportToExcelPCF.git
+   git clone https://github.com/keyur-choksi/ExportToExcelPCF.git
    cd ExportToExcelPCF
    npm install
    npm run build
